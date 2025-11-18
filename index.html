@@ -9,50 +9,24 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat',sans-serif; }
 body { background-color:#000; color:#fff; line-height:1.6; overflow-x:hidden; }
-
 .container { max-width:1200px; margin:0 auto; padding:0 20px; }
-
 header { position:fixed; top:0; width:100%; background-color:rgba(0,0,0,0.9); z-index:1000; padding:20px 0; transition:0.3s; }
 nav { display:flex; justify-content:space-between; align-items:center; }
-
-.logo { font-size:24px; font-weight:700; letter-spacing:2px; color:#fff; }
-
+.logo img { display:block; height:50px; } /* Logo centré avec taille ajustable */
 .nav-links { list-style:none; display:flex; gap:30px; }
 .nav-links li { cursor:pointer; transition:0.3s; }
 .nav-links li:hover { color:#ccc; }
-
 .cart-icon { position:relative; cursor:pointer; font-size:24px; }
 .cart-count { position:absolute; top:-10px; right:-10px; background-color:#fff; color:#000; border-radius:50%; padding:5px 8px; font-size:12px; font-weight:700; }
 
-.hero {
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background-color:#000;
-    position:relative;
-}
+section { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:100px 0; }
 
-.hero-content {
-    z-index:1;
-    max-width:800px;
-    animation:fadeInUp 1s ease-out;
-}
-
-.hero-logo {
-    width:260px;
-    margin-bottom:25px;
-}
-
-.hero h1 { font-size:48px; margin-bottom:20px; animation:fadeInUp 1.2s ease-out; }
-.hero p { font-size:18px; margin-bottom:30px; animation:fadeInUp 1.3s ease-out; }
-
-.cta-btn {
-    background-color:#fff; color:#000; padding:15px 30px;
-    text-decoration:none; font-weight:700; border-radius:5px;
-    transition:0.3s; animation:fadeInUp 1.4s ease-out;
-}
+.hero { background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size:cover; background-position:center; background-attachment:fixed; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; }
+.hero::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); }
+.hero-content { z-index:1; max-width:800px; }
+.hero h1 { font-size:48px; margin-bottom:20px; animation:fadeInUp 1s ease-out; }
+.hero p { font-size:18px; margin-bottom:30px; animation:fadeInUp 1.2s ease-out; }
+.cta-btn { background-color:#fff; color:#000; padding:15px 30px; text-decoration:none; font-weight:700; border-radius:5px; transition:0.3s; animation:fadeInUp 1.4s ease-out; }
 .cta-btn:hover { background-color:#ccc; transform:scale(1.05); }
 
 @keyframes fadeInUp {
@@ -60,41 +34,23 @@ nav { display:flex; justify-content:space-between; align-items:center; }
     to {opacity:1; transform:translateY(0);}
 }
 
-.about { background-color:#111; text-align:center; padding:100px 0; }
+.about { background-color:#111; text-align:center; }
 .about h2 { font-size:36px; margin-bottom:20px; }
 .about p { font-size:18px; margin-bottom:30px; }
 
-.email-btn {
-    background-color:#fff; color:#000; padding:15px 30px;
-    text-decoration:none; font-weight:700; border-radius:5px;
-    transition:0.3s;
-}
+.email-btn { background-color:#fff; color:#000; padding:15px 30px; text-decoration:none; font-weight:700; border-radius:5px; transition:0.3s; }
 .email-btn:hover { background-color:#ccc; transform:scale(1.05); }
 
-.product { background-color:#000; text-align:center; padding:100px 0; }
+.product { background-color:#000; text-align:center; }
 .product h2 { font-size:36px; margin-bottom:40px; }
 
-.product-detail {
-    display:flex;
-    gap:40px;
-    align-items:center;
-    flex-wrap:wrap;
-    margin-bottom:80px;
-}
-
+.product-detail { display:flex; gap:40px; align-items:center; flex-wrap:wrap; margin-bottom:100px; }
 .product-gallery { flex:1; max-width:500px; }
-
-.main-image {
-    width:100%; height:400px; object-fit:cover;
-    border-radius:10px; transition:0.3s;
-}
+.main-image { width:100%; height:auto; border-radius:10px; transition:0.3s; }
 .main-image:hover { transform:scale(1.05); }
 
 .gallery-thumbs { display:flex; gap:10px; margin-top:20px; justify-content:center; }
-.gallery-thumbs img {
-    width:80px; height:80px; object-fit:cover;
-    cursor:pointer; border-radius:5px; transition:0.3s;
-}
+.gallery-thumbs img { width:80px; height:80px; object-fit:cover; cursor:pointer; border-radius:5px; transition:0.3s; }
 .gallery-thumbs img:hover { opacity:0.7; }
 
 .product-info { flex:1; text-align:left; }
@@ -103,21 +59,14 @@ nav { display:flex; justify-content:space-between; align-items:center; }
 
 .sizes, .colors { margin-bottom:20px; }
 .sizes button, .colors button {
-    margin-right:10px; padding:10px 15px;
-    border:1px solid #fff; background-color:transparent;
-    color:#fff; cursor:pointer; border-radius:5px;
-    transition:0.3s;
+    margin-right:10px; padding:10px 15px; border:1px solid #fff; background-color:transparent;
+    color:#fff; cursor:pointer; border-radius:5px; transition:0.3s;
 }
-.sizes button:hover, .colors button:hover,
-.sizes button.selected, .colors button.selected {
+.sizes button:hover, .colors button:hover, .sizes button.selected, .colors button.selected {
     background-color:#fff; color:#000;
 }
 
-.add-to-cart {
-    background-color:#fff; color:#000; padding:15px 30px;
-    border:none; font-weight:700; border-radius:5px;
-    cursor:pointer; transition:0.3s;
-}
+.add-to-cart { background-color:#fff; color:#000; padding:15px 30px; border:none; font-weight:700; border-radius:5px; cursor:pointer; transition:0.3s; }
 .add-to-cart:hover { background-color:#ccc; transform:scale(1.05); }
 
 footer { background-color:#111; text-align:center; padding:40px 0; }
@@ -127,8 +76,8 @@ footer { background-color:#111; text-align:center; padding:40px 0; }
 
 @media(max-width:768px){
     .hero h1{font-size:32px;}
-    .nav-links{display:none;}
     .product-detail{flex-direction:column;}
+    .nav-links{display:none;}
 }
 </style>
 </head>
@@ -137,7 +86,10 @@ footer { background-color:#111; text-align:center; padding:40px 0; }
 
 <header>
     <nav class="container">
-        <div class="logo">CHOUFLI_9ACH</div>
+        <!-- LOGO MODIFIÉ -->
+        <div class="logo">
+            <img src="images/Logo.png" alt="Choufli_9ach Logo">
+        </div>
         <ul class="nav-links">
             <li onclick="scrollToSection('hero')">Home</li>
             <li onclick="scrollToSection('product')">Shop</li>
@@ -152,10 +104,6 @@ footer { background-color:#111; text-align:center; padding:40px 0; }
 
 <section id="hero" class="hero">
     <div class="hero-content">
-
-        <!-- ✅ LOGO CORRIGÉ ICI -->
-        <img src="Logo.png" alt="Choufli_9ach Logo" class="hero-logo">
-
         <h1>Rooted in Tunisian soul, built for the city pulse.</h1>
         <p>Minimal palettes, bold cuts, and custom embroidery inspired by Medina geometry.</p>
         <a href="#" class="cta-btn" onclick="scrollToSection('product')">SHOP NOW</a>
@@ -165,7 +113,7 @@ footer { background-color:#111; text-align:center; padding:40px 0; }
 <section id="about" class="about">
     <div class="container">
         <h2>About choufli_9ach</h2>
-        <p>choufli_9ach is a Tunisian streetwear brand blending tradition with modern style. Our creative process focuses on originality, quality, and cultural inspiration from the Medina's geometric patterns.</p>
+        <p>choufli_9ach is a Tunisian streetwear brand blending tradition with modern style.</p>
         <p>Pop-up, collab, or wholesale? Slide into our inbox.</p>
         <a href="mailto:Mbusiness@outlook.fr" class="email-btn">Email CHOUFLI_9ACH</a>
     </div>
@@ -175,8 +123,76 @@ footer { background-color:#111; text-align:center; padding:40px 0; }
     <div class="container">
         <h2>Our Products</h2>
 
-        <!-- PRODUITS NON MODIFIÉS -->
-        ...
+        <!-- 🔥 PRODUIT 1 : HOODIE SEVENTOUI -->
+        <div class="product-detail">
+            <div class="product-gallery">
+                <img id="main-image-1" class="main-image" 
+                     src="https://i.ibb.co/SDgMDC2v/seventoui-hoodie-png.png" 
+                     alt="Hoodie Seventoui">
+
+                <div class="gallery-thumbs">
+                    <img src="https://i.ibb.co/SDgMDC2v/seventoui-hoodie-png.png" 
+                         onclick="changeImage('main-image-1', this.src)">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h3>Hoodie Seventoui</h3>
+                <p>Edition spéciale inspirée de l’univers Seventoui, imprimée sur hoodie premium.</p>
+                <div class="price">60 TND</div>
+
+                <div class="sizes">
+                    <h4>Sizes</h4>
+                    <button onclick="selectSize('S', 1)">S</button>
+                    <button onclick="selectSize('M', 1)">M</button>
+                    <button onclick="selectSize('L', 1)">L</button>
+                    <button onclick="selectSize('XL', 1)">XL</button>
+                </div>
+
+                <div class="colors">
+                    <h4>Colors</h4>
+                    <button onclick="selectColor('Black', 1)">Black</button>
+                    <button onclick="selectColor('White', 1)">White</button>
+                </div>
+
+                <button class="add-to-cart" onclick="addToCart(1)">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- PRODUIT 2 -->
+        <div class="product-detail">
+            <div class="product-gallery">
+                <img id="main-image-2" class="main-image" 
+                     src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                     alt="Blanc Minimal T-Shirt">
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         onclick="changeImage('main-image-2', this.src)">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h3>Blanc Minimal T-Shirt</h3>
+                <p>Simple and elegant white T-shirt for everyday streetwear.</p>
+                <div class="price">35 TND</div>
+
+                <div class="sizes">
+                    <h4>Sizes</h4>
+                    <button onclick="selectSize('S', 2)">S</button>
+                    <button onclick="selectSize('M', 2)">M</button>
+                    <button onclick="selectSize('L', 2)">L</button>
+                    <button onclick="selectSize('XL', 2)">XL</button>
+                </div>
+
+                <div class="colors">
+                    <h4>Colors</h4>
+                    <button onclick="selectColor('White', 2)">White</button>
+                </div>
+
+                <button class="add-to-cart" onclick="addToCart(2)">Add to Cart</button>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -191,8 +207,74 @@ footer { background-color:#111; text-align:center; padding:40px 0; }
 </footer>
 
 <script>
-/* TON JS ORIGINAL — NON MODIFIÉ */
+const products = [
+    { 
+        id: 1, 
+        name: 'Hoodie Seventoui', 
+        price: 60, 
+        img: 'https://i.ibb.co/SDgMDC2v/seventoui-hoodie-png.png' 
+    },
+    { 
+        id: 2, 
+        name: 'Blanc Minimal T-Shirt', 
+        price: 35, 
+        img: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' 
+    }
+];
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let selectedSize = {};
+let selectedColor = {};
+
+function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+function changeImage(mainId, src){ document.getElementById(mainId).src = src; }
+
+function selectSize(size, productId){
+    selectedSize[productId] = size;
+    event.target.parentNode.querySelectorAll("button").forEach(btn => btn.classList.remove('selected'));
+    event.target.classList.add('selected');
+}
+
+function selectColor(color, productId){
+    selectedColor[productId] = color;
+    event.target.parentNode.querySelectorAll("button").forEach(btn => btn.classList.remove('selected'));
+    event.target.classList.add('selected');
+}
+
+function addToCart(productId){
+    if(!selectedSize[productId] || !selectedColor[productId]){
+        alert('Please select size and color.');
+        return;
+    }
+
+    const product = products.find(p => p.id === productId);
+    let existing = cart.find(item => item.id === productId && item.size === selectedSize[productId] && item.color === selectedColor[productId]);
+
+    if(existing){ existing.qty++; }
+    else{
+        cart.push({
+            id:product.id,
+            name:product.name,
+            price:product.price,
+            img:product.img,
+            size:selectedSize[productId],
+            color:selectedColor[productId],
+            qty:1
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert('Added to cart!');
+}
+
+function updateCartCount(){
+    document.getElementById('cart-count').textContent = cart.length;
+}
+updateCartCount();
 </script>
 
 </body>
 </html>
+
+
